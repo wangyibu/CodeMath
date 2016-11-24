@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var copy = require('gulp-contrib-copy');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 gulp.task('copydir1', function() {
     gulp.src('dir1/**')
@@ -10,7 +11,8 @@ gulp.task('copydir1', function() {
 
 gulp.task('t1', function() {
     return gulp.src('src/**/*.js')
-      .pipe(concat('all.js'))
+      .pipe(concat('all.min.js'))
+      .pipe(uglify())
       .pipe(gulp.dest('dest'));
 });
 
